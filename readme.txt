@@ -24,7 +24,7 @@ This plugin prevents brute force logins on your WordPress website by implementin
 
 == Installation ==
 
-1. Upload `coinhive-auth` to the `/wp-content/plugins/` directory
+1. Upload `coin-auth` to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. Register with coinhive.com
 4. In the admin, go to Settings > Coinhive captcha and enter your API credentials
