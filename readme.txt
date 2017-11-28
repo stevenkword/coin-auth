@@ -7,12 +7,29 @@ Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Prevent and monetize brute force attacks on your WordPress site with proof-of-work authentication.
+Deter and monetize brute force attacks on your WordPress site with proof-of-work authentication. Similar to Google's reCAPTCHA at authentication. No more picking out street signs, cars, or storefronts!
 
 
 == Description ==
 
-This plugin deters brute-force attacks on the WordPress admin dashboard by implementing a "proof-of-work" authentication workflow using the Coinhive.com captcha API (requires a Coinhive.com account). From the site owner's perspective this is the same as requiring Google's re-captcha to be completed before being allowing a login request to the WordPress site. What makes this a nice alternative to other systems that use captcha at login is that the user just has to click verify and wait for their web-browser to complete a predetermined amount of "work" by mining a small amount of cryptocurrency, instead of picking out street-signs or cars from random images, before being allowed to submit a login request. The small amount of cryptocurrency that is generated is sent to the site's administrator, even if the username/password is incorrect. The idea is to deter brute-force attacks on WordPress sites by introducing this economic control.
+This plugin deters brute-force attacks on the WordPress admin dashboard by implementing a "proof-of-work" authentication workflow using the Coinhive.com captcha API. This plugin requires a Coinhive.com account to mine cryptocurrency in the browser. The server will verify the amount of work completed by the client and allow a login request to wp-login.php if verification is successful. We hope to deter brute-force attacks on WordPress sites by introducing this economic control.
+
+== FAQs ==
+
+Q: What is cryptocurrency?
+A: Magical internet money! Cryptocurrency like bitcoin, and others, are "mined" by solving complex mathematical problems. See additional reading section of this readme to learn more.
+
+Q: What is a brute-force attack?
+A: In terms of WordPress, it's when an adversary tries to guess your password by submitting a lot of login requests.
+
+Q: Will I get rich off of brute force attacks?!
+A: More than likely not, but adversaries will waste a lot of time trying to guess your password.
+
+Q: Does this mine Bitcoins in the browser?
+A: No, the coinhive API only supports Monero
+
+Q: Is this officially supported, or endorsed by Coinhive.com?
+A: No, I am an individual developer and have designed this plugin on my own accord for research. If you need support please visit the Github repo and open an issue.
 
 
 == Installation ==
@@ -23,27 +40,33 @@ This plugin deters brute-force attacks on the WordPress admin dashboard by imple
 4. In the admin dashboard, go to Settings -> Coin auth and enter your API credentials
 5. Click save
 
+
 == Screenshots ==
 
 1. WordPress login screen, unverified
 2. WordPress login screen, verified
-3. Coinhive captcha admin settings screen
+3. Coin auth admin settings screen
+
 
 == To do ==
 
 1. Logging feature
 2. Pull additional data about coinhive account to display in admin dashboard
+3. Assign additional work to brute-force offenders automatically
+
+
+== Additional reading ==
+
+- 
+- https://en.wikipedia.org/wiki/Proof-of-work_system
+- https://coinhive.com/documentation
+
 
 == 3rd party tools used in this project & privacy ==
 
 - Coinhive API / https://coinhive.com/documentation/http-api
 - Coinhive Privacy policy / https://coinhive.com/info/privacy
 - cryptocompare.com and authedmine.com are also associated with the Coihive API requests.
-
-== Additional reading ==
-
-- https://en.wikipedia.org/wiki/Proof-of-work_system
-- https://coinhive.com/documentation
 
 == Changelog ==
 = 1.0 =
