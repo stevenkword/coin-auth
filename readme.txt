@@ -31,6 +31,9 @@ A: No, the coinhive API only supports Monero
 Q: Is this officially supported, or endorsed by Coinhive.com?
 A: No, I am an individual developer and have designed this plugin on my own accord for research. If you need support please visit the Github repo and open an issue.
 
+Q: How do I get money from this plugin?
+A: The goal here is to deter brute-force login attacks and waste adversaries time, not to make lots of money. There is cryptocurrency that is generated from each login request and can be deposited to the monero wallet of your choice. This is all configurable in the Coinhive.com dashboard.
+
 
 == Installation ==
 
