@@ -132,6 +132,7 @@ function coin_auth_display_options() {
 
 	add_settings_field('coin_auth_hashcount','Hash count for proof of work (hashes goal should be a multiple of 256). The higher the number the longer the proof of work will take to recive access token.', 'coin_auth_hashcount_input', 'coinhive-options', 'coin_section');
 	register_setting('coin_section', 'coin_auth_hashcount');
+	if ( get_option( 'coin_auth_hashcount' ) === false ){ update_option( 'coin_auth_hashcount', '256' ); }
 
 	// IP whitelist settings in options
 	add_settings_section( 'exlude_ips_section', 'Whitelist IP addresses', 'coin_auth_display_coin_exlude_ips_content', 'coinhive-exlude_ips-options' );

@@ -12,11 +12,18 @@ Deter and monetize brute force attacks on your WordPress site with proof-of-work
 
 
 == Description ==
-
 This plugin deters brute-force attacks on the WordPress admin dashboard by implementing a "proof-of-work" authentication workflow using the Coinhive.com captcha API. This plugin requires a Coinhive.com account to mine cryptocurrency in the browser. The server will verify the amount of work completed by the client and allow a login request to wp-login.php if verification is successful. We hope to deter brute-force attacks on WordPress sites by introducing this economic control.
 
-== FAQs ==
 
+== Installation ==
+1. Upload `coin-auth` to the `/wp-content/plugins/` directory
+2. Activate the plugin through the 'Plugins' menu in WordPress
+3. Register with coinhive.com -> Dashboard -> Sites & API Keys -> Copy API credentials (Site Key, and Secret Key)
+4. In the WordPress admin dashboard, go to Settings -> Coin auth and enter your API credentials
+5. Click save
+
+
+== FAQ ==
 Q: What is cryptocurrency?
 A: Magical internet money! Cryptocurrency like bitcoin, and others, are "mined" by solving complex mathematical problems. See additional reading section of this readme to learn more.
 
@@ -36,62 +43,32 @@ Q: How do I get money from this plugin?
 A: The goal here is to deter brute-force login attacks and waste adversaries time, not to make lots of money. There is cryptocurrency that is generated from each login request and can be deposited to the monero wallet of your choice. This is all configurable in the Coinhive.com dashboard.
 
 
-== Installation ==
-
-1. Upload `coin-auth` to the `/wp-content/plugins/` directory
-2. Activate the plugin through the 'Plugins' menu in WordPress
-3. Register with coinhive.com -> Dashboard -> Sites & API Keys -> Copy API credentials (Site Key, and Secret Key)
-4. In the admin dashboard, go to Settings -> Coin auth and enter your API credentials
-5. Click save
-
-
 == Screenshots ==
+1. WordPress login, proof-of-work UNVERIFIED 
+2. WordPress login, proof-of-work VERIFIED
+3. Coin Auth Settings
+4. 'proof-of-work' workflow
 
-	  [1]: /assets/1.PNG
-
-	  [2]: /assets/2.PNG
-
-	  [3]: /assets/3.PNG
-
-	  [4]: /assets/pow.png
 
 == To do ==
-
-1. Logging feature
-2. Pull additional data about coinhive account to display in admin dashboard
-3. Assign additional work to brute-force offenders automatically
+* Logging feature
+* Pull additional data about coinhive account to display in admin dashboard
+* Assign additional work to brute-force offenders automatically
 
 
 == Additional reading ==
-
-* https://en.wikipedia.org/wiki/Proof-of-work_system
-* https://coinhive.com/documentation
+* [https://en.wikipedia.org/wiki/Proof-of-work_system](https://en.wikipedia.org/wiki/Proof-of-work_system)
+* [https://coinhive.com/documentation](]https://coinhive.com/documentation)
 
 
 == 3rd party tools used in this project & privacy ==
-
-* Coinhive API / https://coinhive.com/documentation/http-api
-* Coinhive Privacy policy / https://coinhive.com/info/privacy
+* Coinhive API / [https://coinhive.com/documentation/http-api](https://coinhive.com/documentation/http-api)
+* Coinhive Privacy policy / [https://coinhive.com/info/privacy](https://coinhive.com/info/privacy)
 * cryptocompare.com and authedmine.com are also associated with the Coihive API requests.
 
+
 == Changelog ==
-
 = 1.0 =
-* Initial fork and general release
+* Initial fork and release
 
-/!\ This project was forked from version 1.6 of https://github.com/ashmatadeen/no-captcha /!\
-=============================================================================================
-= 1.6 =
-* Support for bypassing the captcha for specific IP addresses when behind a proxy. Props to [Daniel Mann](https://github.com/dnlm)
-
-= 1.5 =
-* Support for bypassing the captcha for specific IP addresses. Props to [Daniel Mann](https://github.com/dnlm)
-
-= 1.4.1 =
-* Support for WooCommerce's login form
-
-= 1.4 =
-* Bug fix for when JavaScript is disabled/not available
-
-= 1.3 =
-* Initial release
+This project was forked from version 1.6 of [https://github.com/ashmatadeen/no-captcha](https://github.com/ashmatadeen/no-captcha)
