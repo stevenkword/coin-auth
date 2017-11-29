@@ -47,10 +47,13 @@ A: The goal here is to deter brute-force login attacks and waste adversaries tim
 
 == Screenshots ==
 
-1. WordPress login screen, unverified
-2. WordPress login screen, verified
-3. Coin auth admin settings screen
+	  [1]: /assets/1.PNG
 
+	  [2]: /assets/2.PNG
+
+	  [3]: /assets/3.PNG
+
+	  [4]: /assets/pow.png
 
 == To do ==
 
@@ -61,18 +64,18 @@ A: The goal here is to deter brute-force login attacks and waste adversaries tim
 
 == Additional reading ==
 
-- 
-- https://en.wikipedia.org/wiki/Proof-of-work_system
-- https://coinhive.com/documentation
+* https://en.wikipedia.org/wiki/Proof-of-work_system
+* https://coinhive.com/documentation
 
 
 == 3rd party tools used in this project & privacy ==
 
-- Coinhive API / https://coinhive.com/documentation/http-api
-- Coinhive Privacy policy / https://coinhive.com/info/privacy
-- cryptocompare.com and authedmine.com are also associated with the Coihive API requests.
+* Coinhive API / https://coinhive.com/documentation/http-api
+* Coinhive Privacy policy / https://coinhive.com/info/privacy
+* cryptocompare.com and authedmine.com are also associated with the Coihive API requests.
 
 == Changelog ==
+
 = 1.0 =
 * Initial fork and general release
 
