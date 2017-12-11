@@ -7,7 +7,7 @@
  * @package coin-auth
  * Author: dustyfresh
  * Author URI: https://twitter.com/dustyfresh
- * Version: 1.0
+ * Version: 1.0.1
  */
 
 add_action( 'admin_menu', 'coin_auth_menu' );
