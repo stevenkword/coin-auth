@@ -85,7 +85,7 @@ function coin_auth_options_page() {
 
 								<div class="inside">
 									<?php
-										$monero = json_decode(file_get_contents("https://min-api.cryptocompare.com/data/price?fsym=XMR&tsyms=BTC,USD,EUR", false));
+										$monero     = json_decode( file_get_contents( 'https://min-api.cryptocompare.com/data/price?fsym=XMR&tsyms=BTC,USD,EUR', false ) );
 										$xmr_to_btc = $monero->BTC;
 										$xmr_to_usd = $monero->USD;
 										$xmr_to_eur = $monero->EUR;
@@ -130,9 +130,10 @@ function coin_auth_display_options() {
 	register_setting( 'coin_section', 'coin_auth_site_key' );
 	register_setting( 'coin_section', 'coin_auth_secret_key' );
 
-	add_settings_field('coin_auth_hashcount','Hash count for proof of work (hashes goal should be a multiple of 256). The higher the number the longer the proof of work will take to recive access token.', 'coin_auth_hashcount_input', 'coinhive-options', 'coin_section');
-	register_setting('coin_section', 'coin_auth_hashcount');
-	if ( get_option( 'coin_auth_hashcount' ) === false ){ update_option( 'coin_auth_hashcount', '256' ); }
+	add_settings_field( 'coin_auth_hashcount', 'Hash count for proof of work (hashes goal should be a multiple of 256). The higher the number the longer the proof of work will take to recive access token.', 'coin_auth_hashcount_input', 'coinhive-options', 'coin_section' );
+	register_setting( 'coin_section', 'coin_auth_hashcount' );
+	if ( get_option( 'coin_auth_hashcount' ) === false ) {
+		update_option( 'coin_auth_hashcount', '256' ); }
 
 	// IP whitelist settings in options
 	add_settings_section( 'exlude_ips_section', 'Whitelist IP addresses', 'coin_auth_display_coin_exlude_ips_content', 'coinhive-exlude_ips-options' );
@@ -144,7 +145,7 @@ function coin_auth_display_options() {
 }
 
 function coin_auth_hashcount_input() {
-	echo '<input type="text" name="coin_auth_hashcount" id="coin_auth_hashcount" value="' . esc_attr(get_option( 'coin_auth_hashcount' )) . '" />';
+	echo '<input type="text" name="coin_auth_hashcount" id="coin_auth_hashcount" value="' . esc_attr( get_option( 'coin_auth_hashcount' ) ) . '" />';
 }
 
 function coin_auth_display_coin_exlude_ips_content() {
@@ -152,7 +153,7 @@ function coin_auth_display_coin_exlude_ips_content() {
 }
 
 function coin_auth_exlude_ips_input() {
-	echo '<input size="60" type="text" name="coin_auth_exlude_ips" id="coin_auth_exlude_ips" value="' . esc_attr(get_option( 'coin_auth_exlude_ips' )) . '" />';
+	echo '<input size="60" type="text" name="coin_auth_exlude_ips" id="coin_auth_exlude_ips" value="' . esc_attr( get_option( 'coin_auth_exlude_ips' ) ) . '" />';
 }
 
 function coin_auth_display_coin_api_content() {
@@ -160,30 +161,30 @@ function coin_auth_display_coin_api_content() {
 }
 
 function coin_auth_key_input() {
-	echo '<input type="text" name="coin_auth_site_key" id="captcha_site_key" value="' . esc_attr(get_option( 'coin_auth_site_key' )) . '" />';
+	echo '<input type="text" name="coin_auth_site_key" id="captcha_site_key" value="' . esc_attr( get_option( 'coin_auth_site_key' ) ) . '" />';
 }
 
 function coin_auth_secret_key_input() {
-	echo '<input type="password" name="coin_auth_secret_key" id="captcha_secret_key" value="' . esc_attr(get_option( 'coin_auth_secret_key' )) . '" />';
+	echo '<input type="password" name="coin_auth_secret_key" id="captcha_secret_key" value="' . esc_attr( get_option( 'coin_auth_secret_key' ) ) . '" />';
 }
 
 function coin_auth_exlude_ips_forwarded_for_input() {
-	echo '<input type="checkbox" id="coin_auth_exlude_ips_forwarded_for" name="coin_auth_exlude_ips_forwarded_for" value="1"' . checked( 1, esc_attr(get_option( 'coin_auth_exlude_ips_forwarded_for' )), false ) . '/>';
+	echo '<input type="checkbox" id="coin_auth_exlude_ips_forwarded_for" name="coin_auth_exlude_ips_forwarded_for" value="1"' . checked( 1, esc_attr( get_option( 'coin_auth_exlude_ips_forwarded_for' ) ), false ) . '/>';
 }
 
 function coin_auth_login_form_script() {
 	if ( ! coin_auth_is_ip_excluded() ) {
 		wp_register_script( 'coin_js', plugins_url( '/js/coinhive.js', __FILE__ ) );
 		wp_enqueue_script( 'coin_js' );
-		//wp_register_script( 'coin_auth_login', 'https://authedmine.com/lib/captcha.min.js' );
-		//wp_enqueue_script( 'coin_auth_login' );
+		// wp_register_script( 'coin_auth_login', 'https://authedmine.com/lib/captcha.min.js' );
+		// wp_enqueue_script( 'coin_auth_login' );
 	}
 }
 
 function coin_auth_render_login_captcha() {
 	// Set your keys or work will automatically happen **without proof verification**
-	if ( !coin_auth_api_keys_set() && ! coin_auth_is_ip_excluded() ) {
-		die("<h4 style='color: red;'>coinhive-auth API keys are not set! You must remove the plugin before being able to login again. Reinstall the plugin and configure Coinhive API keys.</h4>");
+	if ( ! coin_auth_api_keys_set() && ! coin_auth_is_ip_excluded() ) {
+		die( "<h4 style='color: red;'>coinhive-auth API keys are not set! You must remove the plugin before being able to login again. Reinstall the plugin and configure Coinhive API keys.</h4>" );
 	}
 	if ( coin_auth_api_keys_set() && ! coin_auth_is_ip_excluded() ) {
 		echo '
@@ -206,8 +207,8 @@ function coin_auth_render_login_captcha() {
 			<div class="coinhive-captcha"
 	name="coinhive-auth"
 	id="coinhive-auth"
-	data-hashes="' . esc_attr(get_option( 'coin_auth_hashcount' )) . ' "
-	data-key="'. esc_attr(get_option( 'coin_auth_site_key' )) .'"
+	data-hashes="' . esc_attr( get_option( 'coin_auth_hashcount' ) ) . ' "
+	data-key="' . esc_attr( get_option( 'coin_auth_site_key' ) ) . '"
 	data-whitelabel="true"
 	data-disable-elements="input[type=submit]"
 	data-callback="callmemaybe">
@@ -215,26 +216,29 @@ function coin_auth_render_login_captcha() {
 				If it does not load, please disable Adblock!</em>
 			</div>
 			<div id="alert"><font style="color: red;" id="notice">Verify captcha before logging in.</font><br/><a href="https://coinhive.com/info/captcha-help" target="_blank"><u>What is this?</u></a><br/>Disable adblock if you do not see "Verify me" box.</div>';
-	}
+	}//end if
 }
 
 function coin_auth_verify_login_captcha( $user, $password ) {
 	$post_data = [
-		'secret' => esc_attr(get_option( 'coin_auth_secret_key' )), // <- Your secret key
-		'token' => $_POST['captcha_token'],
-		'hashes' => esc_attr(get_option( 'coin_auth_hashcount' ))
+		'secret'            => esc_attr( get_option( 'coin_auth_secret_key' ) ),
+		// <- Your secret key
+					'token' => $_POST['captcha_token'],
+		'hashes'            => esc_attr( get_option( 'coin_auth_hashcount' ) ),
 	];
-	$post_context = stream_context_create([
-		'http' => [
-			'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
-			'method'  => 'POST',
-			'content' => http_build_query($post_data)
+	$post_context = stream_context_create(
+		[
+			'http' => [
+				'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+				'method'  => 'POST',
+				'content' => http_build_query( $post_data ),
+			],
 		]
-	]);
-	$url = 'https://api.coinhive.com/token/verify';
-	$response = json_decode(file_get_contents($url, false, $post_context));
+	);
+	$url          = 'https://api.coinhive.com/token/verify';
+	$response     = json_decode( file_get_contents( $url, false, $post_context ) );
 
-	if ($response && $response->success) {
+	if ( $response && $response->success ) {
 		// All good. Token verified!
 		return $user;
 	}
@@ -249,7 +253,7 @@ function coin_auth_api_keys_set() {
 }
 
 function coin_auth_get_exlude_ips() {
-	$exlude_ips = esc_attr(get_option( 'coin_auth_exlude_ips' ));
+	$exlude_ips = esc_attr( get_option( 'coin_auth_exlude_ips' ) );
 	if ( $exlude_ips ) {
 		return array_map( 'trim', explode( ',', $exlude_ips ) );
 	} else {
